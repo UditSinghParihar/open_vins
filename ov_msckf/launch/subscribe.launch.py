@@ -44,7 +44,27 @@ launch_args = [
         name="save_total_state",
         default_value="false",
         description="record the total state with calibration and features to a txt file",
-    )
+    ),
+    DeclareLaunchArgument(
+        name="filepath_est",
+        default_value="state_estimate.txt",
+        description="path to save estimated state (used when save_total_state=true)",
+    ),
+    DeclareLaunchArgument(
+        name="filepath_std",
+        default_value="state_deviation.txt",
+        description="path to save state std-dev (used when save_total_state=true)",
+    ),
+    DeclareLaunchArgument(
+        name="filepath_gt",
+        default_value="state_groundtruth.txt",
+        description="path to save groundtruth state (used when save_total_state=true)",
+    ),
+    DeclareLaunchArgument(
+        name="path_gt",
+        default_value="",
+        description="path to EuRoC ASL CSV ground truth file for pathgt visualization",
+    ),
 ]
 
 def launch_setup(context):
@@ -85,6 +105,10 @@ def launch_setup(context):
             {"use_stereo": LaunchConfiguration("use_stereo")},
             {"max_cameras": LaunchConfiguration("max_cameras")},
             {"save_total_state": LaunchConfiguration("save_total_state")},
+            {"filepath_est": LaunchConfiguration("filepath_est")},
+            {"filepath_std": LaunchConfiguration("filepath_std")},
+            {"filepath_gt": LaunchConfiguration("filepath_gt")},
+            {"path_gt": LaunchConfiguration("path_gt")},
             {"config_path": config_path},
         ],
     )

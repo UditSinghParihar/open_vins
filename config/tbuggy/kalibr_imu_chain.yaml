@@ -1,0 +1,55 @@
+%YAML:1.0
+
+imu0:
+  T_i_b:
+    - [1.0, 0.0, 0.0, 0.0]
+    - [0.0, 1.0, 0.0, 0.0]
+    - [0.0, 0.0, 1.0, 0.0]
+    - [0.0, 0.0, 0.0, 1.0]
+  # IMU: sensor_msgs/Imu on /tbuggy/imu_ins, frame: tbuggy/sensor_wgs84
+  # High-grade GNSS/INS unit. Noise values computed from a 10-second stationary window
+  # detected in log_01_ros2 (indices 562-1562, t=5.6s to 15.6s) using imu_noise_analysis.py.
+  #
+  # HOW EACH PARAMETER IS COMPUTED:
+  #
+  # noise_density = std(axis_during_stationary) / sqrt(sample_rate)
+  #   Converts discrete-time std to continuous-time white noise spectral density.
+  #   Physical meaning: per-sample measurement noise. Shows up as short-term jitter.
+  #   Accel z-axis std is 0.37 m/s^2 (engine idling vibration) — real-world value, not error.
+  #
+  # random_walk = noise_density * 0.1  (heuristic — needs Allan Variance for accuracy)
+  #   Physical meaning: rate at which bias drifts. Integrates into position/velocity error.
+  #   Proper estimation requires hours of static data + Allan deviation plot.
+  #   The 0.1x heuristic is a standard starting point when Allan data is unavailable.
+  #
+  # Measured from stationary window (5.6s–15.6s, engine idling):
+  #   Accel std:  [0.171, 0.188, 0.371] m/s^2  => max axis noise_density = 3.71e-02
+  #   Gyro  std:  [8.4e-3, 5.1e-3, 1.2e-3] rad/s => max axis noise_density = 8.36e-04
+  accelerometer_noise_density: 3.7e-2    # [m/s^2/sqrt(Hz)] — measured, engine-idle noise included
+  accelerometer_random_walk:   4.0e-3    # [m/s^3/sqrt(Hz)] — heuristic (10% of noise_density)
+  gyroscope_noise_density:     8.5e-4    # [rad/s/sqrt(Hz)]  — measured
+  gyroscope_random_walk:       8.5e-5    # [rad/s^2/sqrt(Hz)] — heuristic (10% of noise_density)
+  rostopic: /tbuggy/imu_ins
+  time_offset: 0.0
+  update_rate: 100.0
+  model: "kalibr"
+  Tw:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  R_IMUtoGYRO:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  Ta:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  R_IMUtoACC:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  Tg:
+    - [ 0.0, 0.0, 0.0 ]
+    - [ 0.0, 0.0, 0.0 ]
+    - [ 0.0, 0.0, 0.0 ]
