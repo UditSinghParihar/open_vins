@@ -25,10 +25,10 @@ imu0:
   # Measured from stationary window (5.6s–15.6s, engine idling):
   #   Accel std:  [0.171, 0.188, 0.371] m/s^2  => max axis noise_density = 3.71e-02
   #   Gyro  std:  [8.4e-3, 5.1e-3, 1.2e-3] rad/s => max axis noise_density = 8.36e-04
-  accelerometer_noise_density: 3.7e-2    # [m/s^2/sqrt(Hz)] — measured, engine-idle noise included
-  accelerometer_random_walk:   4.0e-3    # [m/s^3/sqrt(Hz)] — heuristic (10% of noise_density)
-  gyroscope_noise_density:     8.5e-4    # [rad/s/sqrt(Hz)]  — measured
-  gyroscope_random_walk:       8.5e-5    # [rad/s^2/sqrt(Hz)] — heuristic (10% of noise_density)
+  accelerometer_noise_density: 7.4e-2    # [m/s^2/sqrt(Hz)] — 2× measured (safety margin for desert motion vibration)
+  accelerometer_random_walk:   7.4e-3    # [m/s^3/sqrt(Hz)] — 2× heuristic
+  gyroscope_noise_density:     1.7e-3    # [rad/s/sqrt(Hz)]  — 2× measured
+  gyroscope_random_walk:       1.7e-4    # [rad/s^2/sqrt(Hz)] — 2× heuristic
   rostopic: /tbuggy/imu_ins
   time_offset: 0.0
   update_rate: 100.0
