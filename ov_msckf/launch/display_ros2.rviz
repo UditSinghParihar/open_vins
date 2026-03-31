@@ -4,8 +4,8 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /TF1
         - /TF1/Frames1
+        - /Path VIO1
       Splitter Ratio: 0.4882352948188782
     Tree Height: 294
   - Class: rviz_common/Selection
@@ -111,7 +111,7 @@ Visualization Manager:
       Head Length: 0.20000000298023224
       Length: 0.30000001192092896
       Line Style: Billboards
-      Line Width: 0.10000000149011612
+      Line Width: 0.5
       Name: Path VIO
       Offset:
         X: 0
@@ -372,16 +372,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1051.5721435546875
+      Distance: 162.197509765625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 44.70233154296875
-        Y: 99.5666732788086
-        Z: 94.43583679199219
+        X: 1.453662633895874
+        Y: 23.50145721435547
+        Z: -14.572649002075195
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
@@ -390,7 +390,7 @@ Visualization Manager:
       Pitch: 0.6603986024856567
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.450375556945801
+      Yaw: 4.470376014709473
     Saved: ~
 Window Geometry:
   Current Depths:
